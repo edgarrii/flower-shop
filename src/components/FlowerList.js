@@ -1,19 +1,34 @@
-import React, {useContext} from 'react';
-import {Context} from "../index";
+import React, { useContext, useEffect, useState } from "react";
+import { Card, Col } from "react-bootstrap";
+import { Context } from "../index";
+import FlowerImage from "./FlowerImage";
 import Row from "react-bootstrap/Row";
-import FlowerItem from "./FlowerItem";
-import {observer} from "mobx-react-lite";
 
-const FlowerList = observer(() => {
-    const {flower} = useContext(Context)
+const FlowerList = ({ flower }) => {
+  const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [term, setTerm] = useState("anime");
+  const REACT_APP_PIXABAY_API_KEY = "22849846-8845f94e39fb8bff02e7224ca";
 
-    return (
-        <Row className='d-flex'>
-            {flower.flowers.map(flower =>
-                <FlowerItem key={flower.id} flower={flower}/>
-            )}
-        </Row>
-    );
-});
+  useEffect(() => {
+    fetch(
+      `https://pixabay.com/api/?key=${REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo&pretty=true`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setImages(data.hits);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <Row md={3} className="mt-4">
+      {images.map((image) => (
+        <FlowerImage key={image.id} image={image} />
+      ))}
+    </Row>
+  );
+};
 
 export default FlowerList;

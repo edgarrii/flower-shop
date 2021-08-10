@@ -3,7 +3,7 @@ import { Col, Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import FlowerList from "../components/FlowerList";
 
-const Shop = () => {
+const ShopAdmin = () => {
   return (
     <Container>
       <Row>
@@ -15,4 +15,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default ShopAdmin;
