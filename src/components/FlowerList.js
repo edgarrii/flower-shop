@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 const FlowerList = ({ flower }) => {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [term, setTerm] = useState("anime");
+  const [term, setTerm] = useState("flowers");
   const REACT_APP_PIXABAY_API_KEY = "22849846-8845f94e39fb8bff02e7224ca";
 
   useEffect(() => {
