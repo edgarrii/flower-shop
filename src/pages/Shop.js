@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import FlowerList from "../components/FlowerList";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
+import dotenv from "dotenv";
 
 const Shop = () => {
   const [activeTags, setActiveTags] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [term, setTerm] = useState("");
 
   return (
     <Container>
@@ -16,7 +16,7 @@ const Shop = () => {
       <Row>
         <Col md={12}>
           <SearchBar term={term} searchText={(text) => setTerm(text)} />
-          <FlowerList />
+          <FlowerList setTerm={setTerm} />
         </Col>
       </Row>
     </Container>

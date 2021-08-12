@@ -5,17 +5,16 @@ import SearchBar from "./SearchBar";
 import TagForm from "./TagForm";
 import dotenv from "dotenv";
 
-const FlowerList = ({ flower }) => {
+const FlowerList = ({ flower, setIsLoading, setTerm }) => {
   const [images, setImages] = useState([]);
-  const [activeTags, setActiveTags] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [term, setTerm] = useState("");
 
   useEffect(() => {
     dotenv.config();
     const REACT_APP_PIXABAY_API_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
     fetch(
-      `https://pixabay.com/api/?key=${REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo&pretty=true`
+      `https://pixabay.com/api/?key=${REACT_APP_PIXABAY_API_KEY}&q=${terms.join(
+        ","
+      )}&image_type=photo&pretty=true`
     )
       .then((res) => res.json())
       .then((data) => {
