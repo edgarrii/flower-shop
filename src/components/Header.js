@@ -1,19 +1,10 @@
-import React, { useContext } from "react";
-import {
-  Form,
-  Button,
-  FormControl,
-  Nav,
-  Navbar,
-  Container,
-} from "react-bootstrap";
-import { Context } from "../index";
-import { ADMIN_ROUTE, LOGIN_ROUTE, VISITOR_ROUTE } from "../utils/consts";
+import React from "react";
+import { Button, Nav, Navbar, Container } from "react-bootstrap";
+import { LOGIN_ROUTE, USER_ROUTE } from "../utils/consts";
 import { NavLink, useHistory } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 
 const Header = observer(() => {
-  const { user } = useContext(Context);
   const history = useHistory();
 
   return (
@@ -25,41 +16,19 @@ const Header = observer(() => {
             fontSize: "1.5rem",
             textDecoration: "none",
           }}
-          to={VISITOR_ROUTE}
+          to={USER_ROUTE}
         >
-          Flower Shop
+          Picture desk
         </NavLink>
-        <Form className="d-flex m-auto">
-          <FormControl
-            type="search"
-            placeholder="Search"
-            className="mr-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-dark">Search</Button>
-        </Form>
-        {user.isAuth ? (
-          <Nav>
-            <Button
-              onClick={() => history.push(ADMIN_ROUTE)}
-              variant="outline-dark"
-            >
-              Edit
-            </Button>
-
-            <Button
-              style={{ marginLeft: 20 }}
-              onClick={() => history.push(LOGIN_ROUTE)}
-              variant="outline-dark"
-            >
-              Log Out
-            </Button>
-          </Nav>
-        ) : (
-          <Button style={{ marginLeft: 20 }} variant="outline-dark">
-            Authorize
+        <Nav>
+          <Button
+            style={{ marginLeft: 20 }}
+            onClick={() => history.push(LOGIN_ROUTE)}
+            variant="outline-dark"
+          >
+            Log Out
           </Button>
-        )}
+        </Nav>
       </Container>
     </Navbar>
   );

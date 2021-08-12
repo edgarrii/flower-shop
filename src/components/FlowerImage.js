@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import { Context } from "../index";
+import TagForm from "./TagForm";
+import Tag from "./Tag";
 
-const FlowerImage = ({ image }) => {
-  const { user } = useContext(Context);
-
+const FlowerImage = ({ activeTags, image, setTerm, setActiveTags }) => {
   return (
     <Card style={{ width: "19.3rem", margin: 10 }}>
       <Card.Img
         style={{ cursor: "pointer" }}
         variant="top"
         src={image.webformatURL}
+        alt="picture"
       />
       <Card.Body>
         <Card.Title
@@ -36,16 +35,11 @@ const FlowerImage = ({ image }) => {
           <b>Downloads: </b>
           {image.downloads}
         </Card.Text>
-        <div className="d-flex justify-content-between">
-          {user.admin ? (
-            <div>
-              <Button className="mx-2" variant="outline-dark">
-                Edit
-              </Button>
-              <Button variant="outline-danger">Delete</Button>
-            </div>
-          ) : null}
-        </div>
+        <TagForm
+          setActiveTags={setActiveTags}
+          activeTags={activeTags}
+          tags={image.tags.split(",")}
+        />
       </Card.Body>
     </Card>
   );

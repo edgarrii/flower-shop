@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
-import { authRoutes, publicRoutes } from './routes'
-import { VISITOR_ROUTE } from '../utils/consts'
-import { Context } from '../index'
+import React, { useContext } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { authRoutes, publicRoutes } from "./routes";
+import { REGISTRATION_ROUTE } from "../utils/consts";
+import { Context } from "../index";
 
 export default function AppRouter() {
-  const { user } = useContext(Context)
+  const { user } = useContext(Context);
 
   return (
     <Switch>
@@ -16,7 +16,7 @@ export default function AppRouter() {
       {publicRoutes.map(({ path, Component }) => (
         <Route key={path} path={path} component={Component} exact />
       ))}
-      <Redirect to={VISITOR_ROUTE} />
+      <Redirect to={REGISTRATION_ROUTE} />
     </Switch>
-  )
+  );
 }

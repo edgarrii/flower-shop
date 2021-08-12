@@ -1,19 +1,13 @@
-import {
-  ADMIN_ROUTE,
-  LOGIN_ROUTE,
-  REGISTRATION_ROUTE,
-  VISITOR_ROUTE,
-} from '../utils/consts'
-import Admin from '../pages/Admin'
-import Auth from '../pages/Auth'
-import Visitor from '../pages/Visitor'
+import { LOGIN_ROUTE, REGISTRATION_ROUTE, USER_ROUTE } from "../utils/consts";
+import Auth from "../pages/Auth";
+import User from "../pages/User";
 
 export const authRoutes = [
   {
-    path: ADMIN_ROUTE,
-    Component: Admin,
+    path: USER_ROUTE,
+    Component: User,
   },
-]
+];
 
 export const publicRoutes = [
   {
@@ -24,8 +18,4 @@ export const publicRoutes = [
     path: REGISTRATION_ROUTE,
     Component: Auth,
   },
-  {
-    path: VISITOR_ROUTE,
-    Component: Visitor,
-  },
-]
+];
