@@ -27,7 +27,7 @@ const Shop = () => {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [searchInput]);
+  }, [searchInput, activeTags]);
 
   return (
     <Container>

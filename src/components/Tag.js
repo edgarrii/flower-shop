@@ -10,10 +10,7 @@ const Tag = ({ text, activeTags, setActiveTags }) => {
         fontWeight: 600,
         backgroundColor: "lightgray",
       }}
-      onClick={() => {
-        setActiveTags(activeTags, text);
-        console.log(activeTags);
-      }}
+      onClick={() => setActiveTags([...activeTags, text])}
       className="text-black-50 d-inline-block rounded-pill py-1 px-1 mb-2 me-1"
     >
       #{text}
