@@ -3,11 +3,16 @@ import Tag from "./Tag";
 
 const CurrentTags = ({ activeTags, setActiveTags }) => {
   return (
-    <div className="d-flex justify-content-between mt-3">
-      {console.log(activeTags)}
+    <div className="d-flex justify-content-between mt-4">
       {activeTags
         ? activeTags.map((activeTag, index) => (
-            <Tag text={activeTag} key={index} setActiveTags={setActiveTags} />
+            <Tag
+              isActive={true}
+              text={activeTag}
+              key={index}
+              setActiveTags={setActiveTags}
+              activeTags={activeTags}
+            />
           ))
         : ""}
     </div>

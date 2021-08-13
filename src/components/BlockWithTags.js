@@ -6,6 +6,7 @@ const BlockWithTags = ({ tags, activeTags, setActiveTags }) => {
     <div>
       {tags.map((tag, index) => (
         <Tag
+          isActive={false}
           text={tag}
           key={index}
           activeTags={activeTags}
