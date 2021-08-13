@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, FormControl } from "react-bootstrap";
-import TagForm from "./TagForm";
 
-const SearchBar = ({ searchText, term }) => {
+const SearchBar = ({ searchText, searchInput }) => {
   const [text, setText] = useState("");
 
   const onSubmit = (e) => {
@@ -11,8 +10,8 @@ const SearchBar = ({ searchText, term }) => {
   };
 
   useEffect(() => {
-    setText(term);
-  }, [term]);
+    setText(searchInput);
+  }, [searchInput]);
 
   return (
     <div className="d-flex">

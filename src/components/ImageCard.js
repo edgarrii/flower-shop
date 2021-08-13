@@ -1,9 +1,8 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import TagForm from "./TagForm";
-import Tag from "./Tag";
+import BlockWithTags from "./BlockWithTags";
 
-const FlowerImage = ({ activeTags, image, setTerm, setActiveTags }) => {
+const ImageCard = ({ activeTags, image, setActiveTags }) => {
   return (
     <Card style={{ width: "19.3rem", margin: 10 }}>
       <Card.Img
@@ -35,7 +34,7 @@ const FlowerImage = ({ activeTags, image, setTerm, setActiveTags }) => {
           <b>Downloads: </b>
           {image.downloads}
         </Card.Text>
-        <TagForm
+        <BlockWithTags
           setActiveTags={setActiveTags}
           activeTags={activeTags}
           tags={image.tags.split(",")}
@@ -45,4 +44,4 @@ const FlowerImage = ({ activeTags, image, setTerm, setActiveTags }) => {
   );
 };
 
-export default FlowerImage;
+export default ImageCard;

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { authRoutes, publicRoutes } from "./routes";
-import { REGISTRATION_ROUTE } from "../utils/consts";
+import { LOGIN_ROUTE } from "../utils/consts";
 import { Context } from "../index";
 
 export default function AppRouter() {
@@ -16,7 +16,7 @@ export default function AppRouter() {
       {publicRoutes.map(({ path, Component }) => (
         <Route key={path} path={path} component={Component} exact />
       ))}
-      <Redirect to={REGISTRATION_ROUTE} />
+      <Redirect to={LOGIN_ROUTE} />
     </Switch>
   );
 }
