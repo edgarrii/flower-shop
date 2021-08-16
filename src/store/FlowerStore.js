@@ -5,12 +5,4 @@ export default class FlowerStore {
     this._flowers = [];
     makeAutoObservable(this);
   }
-
-  setFlowers(flowers) {
-    this._flowers = flowers;
-  }
-
-  get flowers() {
-    return this._flowers;
-  }
 }

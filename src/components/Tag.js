@@ -2,10 +2,14 @@ import React from "react";
 
 const Tag = ({ isActive, text, activeTags, setActiveTags }) => {
   const deleteTag = () => {
-    console.log("tag" + activeTags, "text" + text);
     if (activeTags) {
       setActiveTags(activeTags.filter((tag) => tag !== text));
     }
+  };
+  console.log(activeTags);
+
+  const stupidFunc = () => {
+    console.log("nothing");
   };
 
   return (
@@ -19,7 +23,11 @@ const Tag = ({ isActive, text, activeTags, setActiveTags }) => {
             fontWeight: 600,
             backgroundColor: "lightgray",
           }}
-          onClick={() => setActiveTags([...activeTags, text])}
+          onClick={
+            activeTags.includes(text)
+              ? () => stupidFunc()
+              : () => setActiveTags([...activeTags, text])
+          }
           className="text-black-50 d-inline-block rounded-pill py-1 px-1 mb-2 me-1"
         >
           #{text}
@@ -34,7 +42,7 @@ const Tag = ({ isActive, text, activeTags, setActiveTags }) => {
           }}
           className="text-black-50 d-inline-block rounded-pill py-1 px-1 mb-2 me-1"
         >
-          #{text}
+          # {text}
           <a
             onClick={() => deleteTag()}
             style={{

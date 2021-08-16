@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, Nav, Navbar, Container } from "react-bootstrap";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import { LOGIN_ROUTE, USER_ROUTE } from "../utils/consts";
 
 const Header = observer(() => {
   return (
@@ -13,15 +14,15 @@ const Header = observer(() => {
             fontSize: "1.5rem",
             textDecoration: "none",
           }} //May be wrong
-          to="/"
+          to={USER_ROUTE}
         >
           Picture desk
         </NavLink>
-        <Nav>
+        <NavLink to={LOGIN_ROUTE}>
           <Button style={{ marginLeft: 20 }} variant="outline-dark">
             Log Out
           </Button>
-        </Nav>
+        </NavLink>
       </Container>
     </Navbar>
   );

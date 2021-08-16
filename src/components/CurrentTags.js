@@ -14,7 +14,7 @@ const CurrentTags = ({ activeTags, setActiveTags }) => {
               activeTags={activeTags}
             />
           ))
-        : ""}
+        : null}
     </div>
   );
 };
