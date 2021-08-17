@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Form, FormLabel } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import { NavLink, useHistory } from "react-router-dom";
@@ -6,11 +6,10 @@ import { REGISTRATION_ROUTE, USER_ROUTE } from "../utils/consts";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { observer } from "mobx-react-lite";
-import { Context } from "../index";
+import { UserContext } from "../store/UserContext";
 
 const LoginForm = observer(
   ({
-    // onSubmitAuth,
     formValid,
     passHandler,
     loginHandler,
@@ -22,25 +21,18 @@ const LoginForm = observer(
     login,
     password,
   }) => {
-    const { user } = useContext(Context);
     const history = useHistory();
-
-    // useEffect(() => {
-    //   console.log(user);
-    // }, [user]);
+    const { setIsAuth } = useContext(UserContext);
 
     const onSubmitAuth = (e) => {
-      // history.push(REGISTRATION_ROUTE);
       e.preventDefault();
       const data = JSON.parse(localStorage.getItem("users")) || [];
-      console.log("data", data);
       if (data.some((el) => el.login === login)) {
-        // console.log("user.isAuth", user.isAuth);
         data.forEach((el) => {
           if (el.login === login && el.password === password) {
-            user.setIsAuth(true);
-            // console.log("user.isAuth", user._isAuth);
-            history.push("/user");
+            setIsAuth(true);
+
+            history.push(USER_ROUTE);
           }
         });
       }

@@ -59,7 +59,6 @@ const Auth = () => {
     >
       {isLogin ? (
         <LoginForm
-          // onSubmitAuth={onSubmitAuth}
           formValid={formValid}
           passHandler={passHandler}
           loginHandler={loginHandler}
@@ -74,6 +73,7 @@ const Auth = () => {
         />
       ) : (
         <RegistrationForm
+          setLoginError={setLoginError}
           formValid={formValid}
           passHandler={passHandler}
           loginHandler={loginHandler}

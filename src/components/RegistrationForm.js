@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 const RegistrationForm = ({
+  setLoginError,
   formValid,
   passHandler,
   loginHandler,
@@ -21,13 +22,15 @@ const RegistrationForm = ({
   const onSubmit = (e) => {
     e.preventDefault();
     const data = JSON.parse(localStorage.getItem("users")) || [];
+    console.log(data.some((user) => user.login === login));
     if (!data.some((user) => user.login === login)) {
       localStorage.setItem(
         "users",
         JSON.stringify([...data, { login, password }])
       );
-    }
-    history.push("/login");
+      alert("Account was successfully registered");
+      history.push(LOGIN_ROUTE);
+    } else setLoginError("This login is already exist");
   };
 
   return (

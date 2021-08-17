@@ -1,10 +1,10 @@
 import React from "react";
-import { Button, Nav, Navbar, Container } from "react-bootstrap";
+import { Button, Navbar, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { LOGIN_ROUTE, USER_ROUTE } from "../utils/consts";
 
-const Header = observer(() => {
+const Header = () => {
   return (
     <Navbar className="w-100" bg="light">
       <Container>
@@ -26,6 +26,6 @@ const Header = observer(() => {
       </Container>
     </Navbar>
   );
-});
+};
 
 export default Header;
